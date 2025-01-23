@@ -1,0 +1,89 @@
+@import "~bulma/bulma";
+
+
+:root {
+    --bulma-body-background-color: 	hsl(0, 0%, 100%);
+    --bulma-primary-h: 205deg;
+    --bulma-primary-l: 64%;
+    --bulma-link-h: 220deg;  
+    --bulma-link-s: -1%;
+    --bulma-link-l: 95%;
+  }
+
+p {
+  font-size: 1.5rem;
+}
+
+li {
+  font-size: 1.5rem;
+}
+a{
+  font-size: 1rem;
+}
+.titulo{
+  font-size: 3rem;
+}
+.subtitulo{
+  font-size: 2rem;
+}
+
+.layout{
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+}
+.bordeButton{
+  border: solid, 2px, #47B2FF;
+  font-size: 1.5rem;
+}
+
+.botoneslineal{
+  display: flex;
+  flex-direction: row;
+}
+
+.columna{
+  display: flex;
+  flex-direction: column;
+}
+.centrado{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.separado {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-items: start;
+}
+.filas{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.marco{
+  border-top-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border: solid ;
+}
+
+.linea{
+  border-top: solid;
+  border-width: 1px;
+  border-color: #f2f2f2;
+}
+
+@media screen and (max-width: 768px) {
+  .noMobile-element {
+    display: none;  
+  }
+ .filas{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+ } 
+}
