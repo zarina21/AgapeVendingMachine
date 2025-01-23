@@ -18,6 +18,7 @@ const ContactPage = () => {
                     <div cllasName="linea m-2">
                         <h1 className="has-text-grey-dark title is-3 m-2">Location Machine</h1>
                         <p className="has-text-grey m-2">Irvine, CA 92614</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
