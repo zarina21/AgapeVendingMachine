@@ -17,7 +17,7 @@ const Navbar = () => {
       <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link href="/" className="ml-6">
-            <Image src={"/logo.jpg"} alt="logo" width={45} height={45} />
+            <Image src={"/Logo.jpg"} alt="logo" width={45} height={45} />
           </Link>
           <button
             onClick={toggleNavbar} // Llama a la función al hacer clic
