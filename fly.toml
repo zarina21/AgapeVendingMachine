@@ -19,6 +19,6 @@ primary_region = "lax"  # Cambié la región a LAX
   memory_mb = 1024
 
 [[services]]
-  [[services.ports]]
-    port = 80
-    handlers = ["http"]
+  [services.http_checks]
+  http_path = "/"
+  host = "blancasalteration.com"
