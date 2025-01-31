@@ -21,4 +21,4 @@ primary_region = "lax"  # Cambié la región a LAX
 [[services]]
   [services.http_checks]
   http_path = "/"
-  host = "blancasalteration.com"
+  host = "agapevendingmachines.com"
