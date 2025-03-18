@@ -14,7 +14,7 @@ const Footer = () => {
             <div className="separado mb-6">
                 <div>
                     <p>Email:</p>
-                    <a className="has-text-Link" href="mailto:chummi620@gmail.com">chummi620@gmail.com</a>
+                    <a className="has-text-Link" href="mailto:edgar558@agapevendingmachines.com">chummi620@gmail.com</a>
                 </div>
                 <div>
                     <p>phone:</p>

@@ -44,7 +44,7 @@ export default function Home() {
               </button>
               <button
                 className="button is-link has-text-primary bordeButton is-rounded pl-5 pr-5 mr-4"
-                onClick={() => window.location.href = 'mailto:chummi620@gmail.com'}
+                onClick={() => window.location.href = 'mailto:edgar558@agapevendingmachines.com'}
               >
                 Email
               </button>
