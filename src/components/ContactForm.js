@@ -2,14 +2,25 @@
 import React, { useState } from "react";
 import { db } from "../firebase/firebaseconfig";
 import { collection, addDoc } from 'firebase/firestore';
+import { sendMail } from "../utils/mail";
 
 const ContactForm = ({ setSuccess }) => {
-    const [name, setName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-    const [errors, setErrors] = useState({});
+    const [form, setForm] = useState({
+      name: '',
+      lastName: '',
+      phone: '',
+      email: '',
+      message: ''
+    });
+   
+    const onChangeForm = (key, value) => {
+      setForm({
+        ...form,
+        [key]: value,
+      });
+    };
+    
+  const [errors, setErrors] = useState({});
 
     const validatePhone = (phone) => {
         const re = /^\d{10}$/;
@@ -25,24 +36,24 @@ const ContactForm = ({ setSuccess }) => {
         e.preventDefault();
         let errors = {};
 
-        if (!name) {
+        if (!form.name) {
             errors.name = "Name is required";
         }
-        if (!lastName) {
+        if (!form.lastName) {
             errors.lastName = "Last name is required";
         }
-        if (!phone) {
+        if (!form.phone) {
             errors.phone = "Phone is required";
         } else if (!validatePhone(phone)) {
             errors.phone = "Invalid phone number";
         }
 
-        if (!email) {
+        if (!form.email) {
             errors.email = "Email is required";
         } else if (!validateEmail(email)) {
             errors.email = "Invalid email address";
         }
-        if (!message) {
+        if (!form.message) {
             errors.message = "Message is required";
         }
 
@@ -51,20 +62,23 @@ const ContactForm = ({ setSuccess }) => {
         if (Object.keys(errors).length === 0) {
             try {
                 const dataToSend = {
-                    name,
-                    lastName,
-                    phone,
-                    email,
-                    message,
+                  name: form.name,
+                  lastName: form.lastName,
+                  phone: form.phone,
+                  email: form.email,
+                  message: form.message,
                 }
           
                 await addDoc(collection(db, 'contacts'), dataToSend);
+                sendMail(form);
+                setForm({
+                  name: '',
+                  lastName: '',
+                  phone: '',
+                  email: '',
+                  message: ''
+                })
                 setSuccess(true);
-                setName("");
-                setLastName("");
-                setPhone("");
-                setEmail("");
-                setMessage("");
             } catch (error) {
                 console.error('Error al enviar formulario:', error);
                 alert('Hubo un error al enviar el formulario. Detalles: ' + error.message);
@@ -81,8 +95,8 @@ const ContactForm = ({ setSuccess }) => {
                     className={`input has-background-white ${errors.name ? 'is-danger' : 'is-primary'} has-text-black`}
                     type="text"
                     placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={form.name}
+                    onChange={(e) => onChangeForm('name', e.target.value)}
                 />
                 {errors.name && <p className="help is-danger">{errors.name}</p>}
             </div>
@@ -92,8 +106,8 @@ const ContactForm = ({ setSuccess }) => {
                     className={`input has-background-white ${errors.lastName ? 'is-danger' : 'is-primary'} has-text-black`}
                     type="text"
                     placeholder="last name"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    value={form.lastName}
+                    onChange={(e) => onChangeForm('lastName', e.target.value)}
                 />
                 {errors.lastName && <p className="help is-danger">{errors.lastName}</p>}
             </div>
@@ -103,8 +117,8 @@ const ContactForm = ({ setSuccess }) => {
                     className={`input has-background-white ${errors.phone ? 'is-danger' : 'is-primary'} has-text-black`}
                     type="text"
                     placeholder="Phone"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    value={form.phone}
+                    onChange={(e) => onChangeForm('phone', e.target.value)}
                 />
             </div>
             {errors.phone && <p className="help is-danger">{errors.phone}</p>}
@@ -114,8 +128,8 @@ const ContactForm = ({ setSuccess }) => {
                     className={`input has-background-white ${errors.email ? 'is-danger' : 'is-primary'} has-text-black`}
                     type="email"
                     placeholder="example@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={form.email}
+                    onChange={(e) => onChangeForm('email', e.target.value)}
                 />
                 {errors.email && <p className="help is-danger">{errors.email}</p>}
             </div>
@@ -124,8 +138,8 @@ const ContactForm = ({ setSuccess }) => {
                 <textarea
                     className={`textarea has-background-white ${errors.message ? 'is-danger' : 'is-primary'} has-text-black`}
                     placeholder="Message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    value={form.message}
+                    onChange={(e) => onChangeForm('message', e.target.value)}
                 ></textarea>
                 {errors.message && <p className="help is-danger">{errors.message}</p>}
             </div>
