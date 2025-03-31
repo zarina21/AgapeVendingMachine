@@ -44,13 +44,13 @@ const ContactForm = ({ setSuccess }) => {
         }
         if (!form.phone) {
             errors.phone = "Phone is required";
-        } else if (!validatePhone(phone)) {
+        } else if (!validatePhone(form.phone)) {
             errors.phone = "Invalid phone number";
         }
 
         if (!form.email) {
             errors.email = "Email is required";
-        } else if (!validateEmail(email)) {
+        } else if (!validateEmail(form.email)) {
             errors.email = "Invalid email address";
         }
         if (!form.message) {

@@ -37,10 +37,16 @@ export default function Home() {
             </p>
             <div className="botoneslineal mt-6">
               <button
-                className="button is-primary has-text-white bordeButton is-rounded pl-5 pr-5 mr-4"
+                className="button is-primary has-background-info has-text-white is-rounded pl-5 pr-5 mr-4"
+                onClick={() => window.location.href = 'https://wa.me/19495664664'}
+              >
+                Whatsapp
+              </button>
+              <button
+                className="button is-primary  has-text-white bordeButton is-rounded pl-5 pr-5 mr-4"
                 onClick={() => window.location.href = 'tel:+1(949) 566-4664'}
               >
-                Call Us
+                Phone
               </button>
               <button
                 className="button is-link has-text-primary bordeButton is-rounded pl-5 pr-5 mr-4"
@@ -76,7 +82,7 @@ export default function Home() {
               <h1 className="title is-1 has-text-primary">Grab & Go Snacks 🍫🥨🥤</h1>
               <p>Our vending machines are stocked with a variety of delicious snacks to satisfy your cravings anytime, anywhere. Whether you need a quick energy boost, a salty treat, or something sweet, we’ve got you covered!</p>
               <p>With easy access, modern technology, and secure payment options, getting your favorite snack has never been easier.</p>
-              <p>Pick, pay, and enjoy! 🚀</p>
+              <p className="mb-4">Pick, pay, and enjoy! 🚀</p>
             </div>
             <Image width={450} height={300} src={"/maquinaSnack.jpg"} alt={"maquina de bebidas"} className="marco"/>
           </div>
@@ -85,7 +91,7 @@ export default function Home() {
               <h1 className="title is-1 has-text-primary">Instant Hydration 💧⚡🥤</h1>
               <p>Our vending machines offer a selection of beverages for every moment of the day. From pure, refreshing water to energy drinks that keep you going and sodas to enjoy anytime.</p>
               <p>With modern technology and fast, secure payment options, we ensure a smooth and convenient experience.</p>
-              <p>Pick your favorite and keep moving with energy! 🚀</p>
+              <p className="mb-4">Pick your favorite and keep moving with energy! 🚀</p>
             </div>
             <Image width={450} height={300} src={"/maquinaBebidas.jpg"} alt={"maquina de bebidas"} className="marco"/>
           </div>
